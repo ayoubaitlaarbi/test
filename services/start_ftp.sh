@@ -1,5 +1,5 @@
 #!/bin/bash
-# this script for start a web server . i use a simple configuration , default one , i change only the ports to 8000 , 4443 on local network . 
+# this script for start a FTP server . i use a simple configuration , default one . the server is listening on port 21 . 
 # services/start_web.sh
 # 
 
@@ -25,7 +25,7 @@ if [ "$STATUS" = "active" ]; then
     echo "Server ip : "
     hostname -I
     echo "Server ports"
-    ss -tulpn | grep -E '8000|4443' | awk '{print $5}'
+    ss -tulpn | grep  '21'
 else
     echo "Failed to start $SERVICE "
 fi

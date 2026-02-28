@@ -45,9 +45,25 @@ We use custom port insted of 80/443 to simulate port forwarding through Nat.
 ### start service
 
 ```bash
+
 ./services/start_web.sh
 
 ```
+
 ![Web Server](screenshots/Web_Server_Running.png)
 
+## FTP Serveri
+
+The FTP server is also hosted inside the DMZ netwok.
+
+It listens on : 
+- FTP 21
+
+```bash 
+
+./services/start_ftp.sh
+
+```
+
+![FTP Server](screenshots/FTP_Server_Running.png)
 
