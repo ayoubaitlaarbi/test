@@ -30,4 +30,24 @@ The goal is to isolate public services inside DMZ , while protecting the interna
 
 ![Virtual Machine](screenshots/Virtual_Machines.png)
 
+# 3. Setup Services
+
+## Web Server
+
+The web server is hosted inside the DMZ network .
+
+It listens on :
+- HTTP 8000
+- HTTPS 4443
+
+We use custom port insted of 80/443 to simulate port forwarding through Nat.
+
+### start service
+
+```bash
+./services/start_web.sh
+
+```
+![Web Server](screenshots/Web_Server_Running.png)
+
 
