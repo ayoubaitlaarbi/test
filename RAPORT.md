@@ -83,5 +83,26 @@ iptables -P OUTPUT ACCEPT
 ```
 This command for block all packet incomming and forwarding by default, accept only the output . the reason is always verify and never trust .
 
+## 4.2 Connection Tracking
+
+```bash
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+```
+This rules allow incoming packets that belong to established or related connection.
+
+### Options
+
+| Option | Meaning |
+|--------|---------|
+| `-A` | Append a rule to a chain |
+| `INPUT` | Incoming traffic to the host |
+| `FORWARD` | Traffic routed through the host |
+| `-m conntrack` | Use the connection tracking module |
+| `--ctstate` | Match connection states |
+| `ESTABLISHED` | Part of an already open connection |
+| `RELATED` | Related with an existing connection |
+| `-j ACCEPT` | Allow the packet |
 
  
