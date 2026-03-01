@@ -20,8 +20,12 @@ iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 
 # HTTP/HTTPS Access
-# Accept all tcp packet on port 8000 or 4443 , to specific ip address.
+# Accept all tcp packet with port 8000 or 4443 , to specific ip address.
 iptables -A FORWARD -p tcp --dport 8000 -d 192.168.0.10 -j ACCEPT
 iptables -A FORWARD -p tcp --dport 4443 -d 192.168.0.10 -j ACCEPT
+
+# FTP Access
+# Accept all tcp packet with port 21.
+iptables -A FORWARD -p tcp --dport 21 -d 192.168.0.20 -j ACCEPT
 
 

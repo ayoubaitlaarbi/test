@@ -112,7 +112,7 @@ iptables -A FORWARD -p tcp --dport 8000 -d 192.168.0.3 -j ACCEPT
 iptables -A FORWARD -p tcp --dport 4443 -d 192.168.0.3 -j ACCEPT 
 
 ```
-These rules allow tcp trafic with destination port is 8000 and 4443 to the host 192.168.0.3.
+These rules allow tcp traffic with destination port is 8000 and 4443 to the host 192.168.0.3.
 
 ### Options
 
@@ -124,3 +124,14 @@ These rules allow tcp trafic with destination port is 8000 and 4443 to the host 
 | `--dport` | Destination port |
 | `-d` | Destination ip address |
 | `-j ACCEPT` | Allow the packet |
+
+## 4.4 FTP Access
+
+```bash
+iptables -A FORWARD -p tcp --dport 21 -d 192.168.0.2 -j ACCEPT
+
+```
+This rule allow tcp traffic to port 21.
+
+
+
