@@ -141,5 +141,12 @@ iptables -A FORWARD -p tcp --dport 25 -d 192.168.0.4 -j ACCEPT
 ``` 
 This rule for allow port 25 .
 
+## 4.6 DNS Access
+
+```bash
+iptables -A FORWARD -p tcp --dport 53 -d 192.168.0.4 -j ACCEPT
+
+``` 
+This rule for allow port 53 .
 
 

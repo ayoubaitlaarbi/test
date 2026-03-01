@@ -31,3 +31,7 @@ iptables -A FORWARD -p tcp --dport 21 -d 192.168.0.20 -j ACCEPT
 # SMTP Access 
 # Accept port 25
 iptables -A FORWARD -p tcp --dport 25 -d 192.168.0.10 -j ACCEPT
+
+# DNS Access
+# Accept port 53
+iptables -A FORWARD -p tcp --dport 53 -d 192.168.0.10 -j ACCEPT
