@@ -90,7 +90,7 @@ iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 ```
-This rules allow incoming packets that belong to established or related connection.
+These rules allow incoming packets that belong to established or related connection.
 
 ### Options
 
@@ -105,4 +105,22 @@ This rules allow incoming packets that belong to established or related connecti
 | `RELATED` | Related with an existing connection |
 | `-j ACCEPT` | Allow the packet |
 
- 
+## 4.3 HTTP/HTTPS Access
+
+```bash
+iptables -A FORWARD -p tcp --dport 8000 -d 192.168.0.3 -j ACCEPT
+iptables -A FORWARD -p tcp --dport 4443 -d 192.168.0.3 -j ACCEPT 
+
+```
+These rules allow tcp trafic with destination port is 8000 and 4443 to the host 192.168.0.3.
+
+### Options
+
+| Option | Meaning |
+|--------|---------|
+| `-A` | Append a rule to a chain |
+| `FORWARD` | Traffic routed through the host |
+| `-p tcp` | match Tcp port |
+| `--dport` | Destination port |
+| `-d` | Destination ip address |
+| `-j ACCEPT` | Allow the packet |
