@@ -81,7 +81,9 @@ iptables -P FORWARD DROP
 iptables -P OUTPUT ACCEPT
 
 ```
-This command for block all packet incomming and forwarding by default, accept only the output . the reason is always verify and never trust .
+Block all incomming traffic . 
+Block forwording.
+Allow firewall outbound updates.
 
 ## 4.2 Connection Tracking
 
@@ -89,8 +91,11 @@ This command for block all packet incomming and forwarding by default, accept on
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
+iptables -A FORWARD -p udp -d 192.168.0.5 --dport 53 -j ACCEPT
+iptables -A FORWARD -p tcp -d 192.168.0.5 --dport 53 -j ACCEPT
+
 ```
-These rules allow incoming packets that belong to established or related connection.
+These rules allow incoming packets that belong to established or related connection. And drop invalid packets.
 
 ### Options
 
@@ -141,5 +146,13 @@ iptables -A FORWARD -p tcp --dport 25 -d 192.168.0.4 -j ACCEPT
 ``` 
 This rule for allow port 25 .
 
+## 4.6 DNS Access
+
+```bash
+iptables -A FORWARD -p udp -d 192.168.0.5 --dport 53 -j ACCEPT
+iptables -A FORWARD -p tcp -d 192.168.0.5 --dport 53 -j ACCEPT
+
+``` 
+This rule for allow port 53 .
 
 
