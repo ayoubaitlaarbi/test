@@ -133,5 +133,13 @@ iptables -A FORWARD -p tcp --dport 21 -d 192.168.0.2 -j ACCEPT
 ```
 This rule allow tcp traffic to port 21.
 
+## 4.5 SMTP Access
+
+```bash
+iptables -A FORWARD -p tcp --dport 25 -d 192.168.0.4 -j ACCEPT
+
+``` 
+This rule for allow port 25 .
+
 
 
