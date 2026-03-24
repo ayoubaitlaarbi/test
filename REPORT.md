@@ -177,4 +177,12 @@ Allow only 2 packets per second to server FTP.
 | `-m limit` | Use limit module |
 | `--limit 2/second` | allow 2 packets per second |
 
+## 4.8 SSH Administration
+
+```bash
+iptables -A INPUT -p tcp --dport 22 -s 192.168.1.2 -j ACCEPT
+
+```
+Only the admin PC can manage the firewall.
+
 

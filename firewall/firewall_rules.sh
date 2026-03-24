@@ -44,3 +44,7 @@ iptables -A FORWARD -p icmp -j ACCEPT
 # Allow 2 packets per second to server FTP
 iptables -A FORWARD -p icmp -m limit --limit 2/second -j ACCEPT
 
+
+#ssh administration
+iptables -A INPUT -p tcp --dport 22 -s 192.168.1.2 -j ACCEPT
+
