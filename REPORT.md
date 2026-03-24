@@ -185,4 +185,10 @@ iptables -A INPUT -p tcp --dport 22 -s 192.168.1.2 -j ACCEPT
 ```
 Only the admin PC can manage the firewall.
 
+## 4.9 ICMP Supervision
 
+```bash 
+iptables -A INPUT -p icmp -s 192.168.1.3 -j ACCEPT
+
+```
+Allow ping from supervision.
