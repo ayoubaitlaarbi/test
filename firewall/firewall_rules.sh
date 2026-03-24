@@ -37,3 +37,10 @@ iptables -A FORWARD -p tcp --dport 25 -d 192.168.0.4 -j ACCEPT
 # Accept port 53
 iptables -A FORWARD -p tcp --dport 53 -d 192.168.0.5 -j ACCEPT
 iptabLes -A FORWARD -P udp --dport 53 -d 192.168.0.5 -j ACCEPT
+
+# ICMP
+# Allow ping
+iptables -A FORWARD -p icmp -j ACCEPT
+# Allow 2 packets per second to server FTP
+iptables -A FORWARD -p icmp -m limit --limit 2/second -j ACCEPT
+

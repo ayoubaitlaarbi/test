@@ -155,4 +155,26 @@ iptables -A FORWARD -p tcp -d 192.168.0.5 --dport 53 -j ACCEPT
 ``` 
 This rule for allow port 53 .
 
+## 4.7 ICMP
+
+```bash
+iptables -A FORWARD -p icmp -j ACCEPt
+
+```
+Allow ping to serveur DMZ.
+
+```bash
+iptables -A FORWARD -p icmp -d 192.168.0.2 -m limit --limit 2/second -j ACCEPT
+
+```
+Allow only 2 packets per second to server FTP.
+
+### Options
+
+| Option | Meaning |
+|--------|---------|
+| `-p icmp` | match icmp |
+| `-m limit` | Use limit module |
+| `--limit 2/second` | allow 2 packets per second |
+
 
