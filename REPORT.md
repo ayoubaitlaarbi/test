@@ -192,3 +192,13 @@ iptables -A INPUT -p icmp -s 192.168.1.3 -j ACCEPT
 
 ```
 Allow ping from supervision.
+
+## 4.10 Anti-Spoofing
+
+```bash
+iptables -A INPUT -i eth0 -s 192.168.0.0/16 -j DROP
+
+```
+Block private ip that coming from eth0.
+
+

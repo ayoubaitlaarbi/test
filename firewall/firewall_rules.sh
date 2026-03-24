@@ -50,3 +50,7 @@ iptables -A INPUT -p tcp --dport 22 -s 192.168.1.2 -j ACCEPT
 
 #icmp supervision
 iptables -A INPUT -p icmp -s 192.168.1.3 -j ACCEPT
+
+#Anti-Spoofing
+iptables -A INPUT -i eth0 -s 192.168.0.0/16 -j DROP
+
