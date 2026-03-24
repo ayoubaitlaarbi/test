@@ -201,4 +201,26 @@ iptables -A INPUT -i eth0 -s 192.168.0.0/16 -j DROP
 ```
 Block private ip that coming from eth0.
 
+## 4.11 Port scan
+
+```bash
+iptables -A INPUT -m recent --name scan --update --seconds 60 --hitcount 10 -j DROP
+iptables -A IMPUT -m recent --set -j ACCEPT
+
+```
+If the IP hit 10 times in 60 seconds , match this rule.
+
+### Options
+
+| Option | Meaning |
+|--------|---------|
+| `-m recent` | Use limit module |
+| `--name` | name for recent list |
+| `--update` |  check if the IP is already in the list |
+| `--seconds 60` | look at last 60 seconds |
+| `--hitcount 10` | if the ip hit 10 time |
+| `--set` | add the ip to the list |
+
+
+
 

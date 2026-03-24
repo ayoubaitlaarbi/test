@@ -54,3 +54,9 @@ iptables -A INPUT -p icmp -s 192.168.1.3 -j ACCEPT
 #Anti-Spoofing
 iptables -A INPUT -i eth0 -s 192.168.0.0/16 -j DROP
 
+
+#port scan
+iptables -A INPUT -m recent --name scan --update --seconds 60 --hitcount 10 -j DROP
+iptables -A IMPUT -m recent --set -j ACCEPT
+
+
