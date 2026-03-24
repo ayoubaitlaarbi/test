@@ -221,6 +221,15 @@ If the IP hit 10 times in 60 seconds , match this rule.
 | `--hitcount 10` | if the ip hit 10 time |
 | `--set` | add the ip to the list |
 
+## 4.12 Ping of death
+
+```bash
+iptables -A INPUT -p icmp --icmp-type echo-request -m limit --limit 1/s -j ACCEPT
+iptables -A INPUT -p icmp -j DROP
+
+```
+These rules allow 1 icmp request per second.
+
 
 
 
