@@ -256,12 +256,20 @@ The client thinks it is communicating with the public server.
 
 ## 5.3 SMTP
 
-```
+```bash
 iptables -t nat -A PREROUTING -p tcp --dport 25 -d 172.17.0.4 -j DNAT --to-destination 192.168.0.4:25
 iptables -t nat -A POSTROUTING -s 192.168.0.4 -o eth0 -j SNAT --to-source 172.17.0.4
 
 ```
 Incomming traffic to 172.17.0.4:21 is redirected to 192.168.0.4 .
+
+## 5.4 DNS
+
+```bash
+iptables -t nat -A PREROUTING -p tcp --dport 53 -d 172.17.0.5 -j DNAT --to-destination 192.168.0.5:53
+iptables -t nat -A POSTROUTING -s 192.168.0.5 -o eth0 -j SNAT --to-source 172.17.0.5
+
+```
 
 
 

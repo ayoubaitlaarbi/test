@@ -22,4 +22,8 @@ iptables -t nat -A POSTROUTING -s 192.168.0.2 -o eth0 -j SNAT --to-source 172.17
 iptables -t nat -A PREROUTING -p tcp --dport 25 -d 172.17.0.4 -j DNAT --to-destination 192.168.0.4:25
 iptables -t nat -A POSTROUTING -s 192.168.0.4 -o eth0 -j SNAT --to-source 172.17.0.4
 
+#DNS NAT
+iptables -t nat -A PREROUTING -p tcp --dport 53 -d 172.17.0.5 -j DNAT --to-destination 192.168.0.5:53
+iptables -t nat -A POSTROUTING -s 192.168.0.5 -o eth0 -j SNAT --to-source 172.17.0.5
+
 
