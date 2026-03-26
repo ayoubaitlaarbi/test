@@ -230,6 +230,21 @@ iptables -A INPUT -p icmp -j DROP
 ```
 These rules allow 1 icmp request per second.
 
+# 5. Nat configuration
+
+Network Address Translation(NAT) is a technique used by routers to allow multiple devices on a private network to share a single public ip.
+
+## 5.1 HTTP/HTTPS
+
+```bash
+iptables -t nat -A PREROUTING -p tcp --dport 80 -d 172.17.0.2 -j DNAT --to-destination 192.168.0.2:8000
+iptables -t nat -A PREROUTING -p tcp --dport 443 -d 172.17.0.2 -j DNAT --to-destination 192.168.0.2:4443
+
+iptables -t nat -A POSTROUTING -s 192.168.0.2 -o eth0 -j SNAT --to-source 172.17.0.2
+
+```
+Incomming traffic to 172.17.0.2:80 or 443 is redirected to the internal server 192.168..0.2 on ports 8000 and 4443. The server processes the request and send the replay back through the firewall. The firewall changes the source IP (Snat) to 172.17.0.2 .
+
 
 
 
