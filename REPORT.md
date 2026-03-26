@@ -271,8 +271,14 @@ iptables -t nat -A POSTROUTING -s 192.168.0.5 -o eth0 -j SNAT --to-source 172.17
 
 ```
 
+# 6. Testing & Validation
 
+## 6.1 Firewall Rules 
 
+![iptables](screenshots/iptables_filter_rules.png)
 
+## 6.2 Nat Rules
+
+![nat](screenshots/iptables_nat_rules.png)
 
 
