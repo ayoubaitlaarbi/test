@@ -252,7 +252,16 @@ iptables -t nat -A PREROUTING -p tcp --dport 21 -d 172.17.0.2 -j DNAT --to-desti
 iptables -t nat -A POSTROUTING -s 192.168.0.2 -o eth0 -j SNAT --to-source 172.17.0.2
 
 ```
+The client thinks it is communicating with the public server.
 
+## 5.3 SMTP
+
+```
+iptables -t nat -A PREROUTING -p tcp --dport 25 -d 172.17.0.4 -j DNAT --to-destination 192.168.0.4:25
+iptables -t nat -A POSTROUTING -s 192.168.0.4 -o eth0 -j SNAT --to-source 172.17.0.4
+
+```
+Incomming traffic to 172.17.0.4:21 is redirected to 192.168.0.4 .
 
 
 
